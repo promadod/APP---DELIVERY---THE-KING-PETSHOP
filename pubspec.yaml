@@ -1,0 +1,40 @@
+name: app_magno
+description: "A new Flutter project."
+
+publish_to: 'none'
+
+version: 1.0.0+1
+environment:
+  sdk: ^3.10.4
+
+dependencies:
+  flutter:
+    sdk: flutter
+  cupertino_icons: ^1.0.8
+  http: ^1.6.0
+  url_launcher: ^6.2.0
+  font_awesome_flutter: ^10.6.0
+  webview_flutter: ^4.13.0
+  shared_preferences: ^2.5.4
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_launcher_icons: ^0.13.1
+  flutter_lints: ^6.0.0
+
+
+flutter:
+  uses-material-design: true
+  assets:
+    - assets/logocarlinho1.PNG
+    - assets/produtos/
+    - assets/icon/
+
+  
+
+flutter_launcher_icons:
+  android: "launcher_icon"
+  ios: true
+  image_path: "assets/icon/loja2.png"
+  min_sdk_android: 21
