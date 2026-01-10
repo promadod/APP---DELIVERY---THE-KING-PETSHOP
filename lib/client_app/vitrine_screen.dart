@@ -16,7 +16,7 @@ class VitrineScreen extends StatefulWidget {
 
 class _VitrineScreenState extends State<VitrineScreen> {
   final String urlProdutos =
-      "${Config.baseUrl}/produtos/?loja_id=${Config.lojaId}";
+      "${Config.baseUrl}/api/produtos/?loja_id=${Config.lojaId}";
 
   List<Produto> produtosTodos = [];
   List<Produto> produtosFiltrados = [];
@@ -186,17 +186,16 @@ class _VitrineScreenState extends State<VitrineScreen> {
           ? const Center(child: CircularProgressIndicator())
           : Column(
               children: [
-                
                 Padding(
                   padding: const EdgeInsets.all(10.0),
                   child: TextField(
                     controller: _searchController,
                     onChanged: (value) => _filtrarResultados(value),
-                    
+
                     style: const TextStyle(color: Colors.black),
                     decoration: InputDecoration(
                       labelText: 'Pesquisar produto...',
-                      
+
                       labelStyle: const TextStyle(color: Colors.grey),
                       prefixIcon: const Icon(Icons.search, color: Colors.grey),
                       border: OutlineInputBorder(
@@ -212,7 +211,6 @@ class _VitrineScreenState extends State<VitrineScreen> {
                   ),
                 ),
 
-                
                 Expanded(
                   child: produtosFiltrados.isEmpty
                       ? const Center(

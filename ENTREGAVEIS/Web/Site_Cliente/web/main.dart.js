@@ -41393,7 +41393,7 @@ yp(){var s=0,r=A.N(t.H),q=1,p=[],o=this,n,m,l,k,j
 var $async$yp=A.O(function(a,b){if(a===1){p.push(b)
 s=q}for(;;)switch(s){case 0:q=3
 s=6
-return A.Q(A.arf(A.eO("https://preapdev.pythonanywhere.com/produtos/?loja_id=1")),$async$yp)
+return A.Q(A.arf(A.eO("https://preapdev.pythonanywhere.com/api/produtos/?loja_id=1")),$async$yp)
 case 6:n=b
 if(n.b===200){l=n
 m=B.be.q0(A.ar7(A.aqk(l.e)).e5(l.w),null)
