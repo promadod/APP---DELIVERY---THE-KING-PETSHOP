@@ -4,7 +4,7 @@ import 'dart:convert';
 import 'dart:async';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import '../config.dart'; 
+import '../config.dart';
 
 class MotoboyScreen extends StatefulWidget {
   final Map<String, dynamic> userData;
@@ -34,14 +34,14 @@ class _MotoboyScreenState extends State<MotoboyScreen>
   int _quantidadeAnterior = 0;
 
   // Filtro do Extrato (Apenas o básico agora)
-  String _filtroSelecionado = 'hoje'; 
+  String _filtroSelecionado = 'hoje';
 
   @override
   void initState() {
     super.initState();
     _tabController = TabController(length: 3, vsync: this);
     _carregarDados();
-    _carregarExtrato(); 
+    _carregarExtrato();
 
     // Robô de atualização automática
     _timerAtualizacao = Timer.periodic(const Duration(seconds: 30), (timer) {
@@ -67,7 +67,8 @@ class _MotoboyScreenState extends State<MotoboyScreen>
 
   Future<void> _carregarExtrato() async {
     // API simplificada: manda período e loja
-    String url = '${Config.baseUrl}/entregas/ganhos/?periodo=$_filtroSelecionado&loja_id=${Config.lojaId}';
+    String url =
+        '${Config.baseUrl}/api/entregas/ganhos/?periodo=$_filtroSelecionado&loja_id=${Config.lojaId}';
 
     try {
       final response = await http.get(
@@ -78,7 +79,7 @@ class _MotoboyScreenState extends State<MotoboyScreen>
       if (response.statusCode == 200) {
         final data = jsonDecode(utf8.decode(response.bodyBytes));
         setState(() {
-          _totalGanhos = (data['total'] as num).toDouble(); 
+          _totalGanhos = (data['total'] as num).toDouble();
           _qtdEntregasFeitas = data['quantidade'];
           _historicoGanhos = data['historico'];
         });
@@ -139,7 +140,9 @@ class _MotoboyScreenState extends State<MotoboyScreen>
     try {
       // Adicionado loja_id
       final response = await http.get(
-        Uri.parse('${Config.baseUrl}/entregas/disponiveis/?loja_id=${Config.lojaId}'),
+        Uri.parse(
+          '${Config.baseUrl}/api/entregas/disponiveis/?loja_id=${Config.lojaId}',
+        ),
         headers: {'Authorization': 'Token ${widget.userData['token']}'},
       );
       if (response.statusCode == 200) {
@@ -166,7 +169,9 @@ class _MotoboyScreenState extends State<MotoboyScreen>
     try {
       // Adicionado loja_id
       final response = await http.get(
-        Uri.parse('${Config.baseUrl}/entregas/minhas/?loja_id=${Config.lojaId}'),
+        Uri.parse(
+          '${Config.baseUrl}/api/entregas/minhas/?loja_id=${Config.lojaId}',
+        ),
         headers: {'Authorization': 'Token ${widget.userData['token']}'},
       );
       if (response.statusCode == 200) {
@@ -184,7 +189,9 @@ class _MotoboyScreenState extends State<MotoboyScreen>
     try {
       // Adicionado loja_id
       final response = await http.post(
-        Uri.parse('${Config.baseUrl}/entregas/assumir/$id/?loja_id=${Config.lojaId}'),
+        Uri.parse(
+          '${Config.baseUrl}/api/entregas/assumir/$id/?loja_id=${Config.lojaId}',
+        ),
         headers: {'Authorization': 'Token ${widget.userData['token']}'},
       );
       if (response.statusCode == 200) {
@@ -207,7 +214,9 @@ class _MotoboyScreenState extends State<MotoboyScreen>
     try {
       // Adicionado loja_id
       final response = await http.post(
-        Uri.parse('${Config.baseUrl}/entregas/finalizar/$id/?loja_id=${Config.lojaId}'),
+        Uri.parse(
+          '${Config.baseUrl}/api/entregas/finalizar/$id/?loja_id=${Config.lojaId}',
+        ),
         headers: {'Authorization': 'Token ${widget.userData['token']}'},
       );
       if (response.statusCode == 200) {
@@ -219,7 +228,7 @@ class _MotoboyScreenState extends State<MotoboyScreen>
           ),
         );
         _carregarDados();
-        _carregarExtrato(); 
+        _carregarExtrato();
       }
     } catch (e) {
       print(e);
@@ -403,7 +412,7 @@ class _MotoboyScreenState extends State<MotoboyScreen>
                   border: Border.all(color: Colors.amberAccent),
                 ),
                 child: Row(
-                  mainAxisSize: MainAxisSize.min, 
+                  mainAxisSize: MainAxisSize.min,
                   children: [
                     const Icon(
                       Icons.warning_amber_rounded,
@@ -421,7 +430,7 @@ class _MotoboyScreenState extends State<MotoboyScreen>
                   ],
                 ),
               ),
-              // Mostra quanto exato de troco tem que dar 
+              // Mostra quanto exato de troco tem que dar
               Padding(
                 padding: const EdgeInsets.only(left: 8.0, top: 2),
                 child: Text(
@@ -469,35 +478,35 @@ class _MotoboyScreenState extends State<MotoboyScreen>
                 Expanded(
                   child: isMinhasEntregas
                       ? (emRota
-                          ? ElevatedButton(
-                              style: ElevatedButton.styleFrom(
-                                backgroundColor: Colors.green,
-                              ),
-                              onPressed: () =>
-                                  _finalizarEntrega(entrega['id']),
-                              child: const Text(
-                                "FINALIZAR",
-                                style: TextStyle(
-                                  color: Colors.white,
-                                  fontWeight: FontWeight.bold,
+                            ? ElevatedButton(
+                                style: ElevatedButton.styleFrom(
+                                  backgroundColor: Colors.green,
                                 ),
-                              ),
-                            )
-                          : Container(
-                              alignment: Alignment.center,
-                              padding: const EdgeInsets.all(8),
-                              decoration: BoxDecoration(
-                                color: Colors.green.withOpacity(0.2),
-                                borderRadius: BorderRadius.circular(5),
-                              ),
-                              child: const Text(
-                                "CONCLUÍDO ✅",
-                                style: TextStyle(
-                                  color: Colors.green,
-                                  fontWeight: FontWeight.bold,
+                                onPressed: () =>
+                                    _finalizarEntrega(entrega['id']),
+                                child: const Text(
+                                  "FINALIZAR",
+                                  style: TextStyle(
+                                    color: Colors.white,
+                                    fontWeight: FontWeight.bold,
+                                  ),
                                 ),
-                              ),
-                            ))
+                              )
+                            : Container(
+                                alignment: Alignment.center,
+                                padding: const EdgeInsets.all(8),
+                                decoration: BoxDecoration(
+                                  color: Colors.green.withOpacity(0.2),
+                                  borderRadius: BorderRadius.circular(5),
+                                ),
+                                child: const Text(
+                                  "CONCLUÍDO ✅",
+                                  style: TextStyle(
+                                    color: Colors.green,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                ),
+                              ))
                       : ElevatedButton(
                           style: ElevatedButton.styleFrom(
                             backgroundColor: const Color(0xFF15A0A5),
@@ -526,7 +535,7 @@ class _MotoboyScreenState extends State<MotoboyScreen>
       padding: const EdgeInsets.all(16.0),
       child: Column(
         children: [
-          // 1. FILTROS 
+          // 1. FILTROS
           Container(
             padding: const EdgeInsets.symmetric(horizontal: 12),
             decoration: BoxDecoration(
@@ -546,7 +555,7 @@ class _MotoboyScreenState extends State<MotoboyScreen>
                 ],
                 onChanged: (value) {
                   setState(() => _filtroSelecionado = value!);
-                  _carregarExtrato(); 
+                  _carregarExtrato();
                 },
               ),
             ),

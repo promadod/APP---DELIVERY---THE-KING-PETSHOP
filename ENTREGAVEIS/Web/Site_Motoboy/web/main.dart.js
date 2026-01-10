@@ -40803,7 +40803,7 @@ case 1:return A.L(q,r)}})
 return A.M($async$lI,r)},
 nf(){var s=0,r=A.N(t.H),q=1,p=[],o=this,n,m,l,k,j,i,h
 var $async$nf=A.O(function(a,b){if(a===1){p.push(b)
-s=q}for(;;)switch(s){case 0:i="https://preapdev.pythonanywhere.com/entregas/ganhos/?periodo="+o.as+"&loja_id=1"
+s=q}for(;;)switch(s){case 0:i="https://preapdev.pythonanywhere.com/api/entregas/ganhos/?periodo="+o.as+"&loja_id=1"
 q=3
 k=t.N
 s=6
@@ -40874,7 +40874,7 @@ var $async$rh=A.O(function(b,c){if(b===1){p.push(c)
 s=q}for(;;)switch(s){case 0:q=3
 k=t.N
 s=6
-return A.Q(A.atF(A.dL("https://preapdev.pythonanywhere.com/entregas/disponiveis/?loja_id=1",0,null),A.am(["Authorization","Token "+A.j(o.a.c.h(0,"token"))],k,k)),$async$rh)
+return A.Q(A.atF(A.dL("https://preapdev.pythonanywhere.com/api/entregas/disponiveis/?loja_id=1",0,null),A.am(["Authorization","Token "+A.j(o.a.c.h(0,"token"))],k,k)),$async$rh)
 case 6:n=c
 if(n.b===200){m=B.bR.tF(B.R.ew(n.w),null)
 if(!a){k=J.cj(m)
@@ -40901,7 +40901,7 @@ var $async$wd=A.O(function(a,b){if(a===1){p.push(b)
 s=q}for(;;)switch(s){case 0:q=3
 l=t.N
 s=6
-return A.Q(A.atF(A.dL("https://preapdev.pythonanywhere.com/entregas/minhas/?loja_id=1",0,null),A.am(["Authorization","Token "+A.j(o.a.c.h(0,"token"))],l,l)),$async$wd)
+return A.Q(A.atF(A.dL("https://preapdev.pythonanywhere.com/api/entregas/minhas/?loja_id=1",0,null),A.am(["Authorization","Token "+A.j(o.a.c.h(0,"token"))],l,l)),$async$wd)
 case 6:n=b
 if(n.b===200)if(o.c!=null)o.af(new A.akW(o,n))
 q=1
@@ -40924,7 +40924,7 @@ var $async$wa=A.O(function(b,c){if(b===1){o.push(c)
 s=p}for(;;)switch(s){case 0:p=4
 k=t.N
 s=7
-return A.Q(A.atQ(A.dL("https://preapdev.pythonanywhere.com/entregas/assumir/"+a+"/?loja_id=1",0,null),null,A.am(["Authorization","Token "+A.j(n.a.c.h(0,"token"))],k,k)),$async$wa)
+return A.Q(A.atQ(A.dL("https://preapdev.pythonanywhere.com/api/entregas/assumir/"+a+"/?loja_id=1",0,null),null,A.am(["Authorization","Token "+A.j(n.a.c.h(0,"token"))],k,k)),$async$wa)
 case 7:m=c
 if(m.b===200){k=n.c
 if(k==null){s=1
@@ -40952,7 +40952,7 @@ var $async$wv=A.O(function(b,c){if(b===1){o.push(c)
 s=p}for(;;)switch(s){case 0:p=4
 k=t.N
 s=7
-return A.Q(A.atQ(A.dL("https://preapdev.pythonanywhere.com/entregas/finalizar/"+a+"/?loja_id=1",0,null),null,A.am(["Authorization","Token "+A.j(n.a.c.h(0,"token"))],k,k)),$async$wv)
+return A.Q(A.atQ(A.dL("https://preapdev.pythonanywhere.com/api/entregas/finalizar/"+a+"/?loja_id=1",0,null),null,A.am(["Authorization","Token "+A.j(n.a.c.h(0,"token"))],k,k)),$async$wv)
 case 7:m=c
 if(m.b===200){k=n.c
 if(k==null){s=1

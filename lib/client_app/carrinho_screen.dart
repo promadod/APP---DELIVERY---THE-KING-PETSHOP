@@ -179,7 +179,7 @@ class _CarrinhoScreenState extends State<CarrinhoScreen> {
 
     try {
       final response = await http.post(
-        Uri.parse("${Config.baseUrl}/pedido/criar/"),
+        Uri.parse("${Config.baseUrl}/api/pedido/criar/"),
         headers: {"Content-Type": "application/json"},
         body: jsonEncode(pedidoJson),
       );

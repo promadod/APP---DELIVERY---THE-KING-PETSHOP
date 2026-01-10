@@ -41153,7 +41153,7 @@ a2=t.N
 g=t.z
 l=A.at(["loja_id",1,"cliente_nome",m.r.a.a,"telefone",m.w.a.a,"total",m.gXv(),"endereco",m.x.a.a,"pagamento",m.Q,"obs",d,"itens",e,"taxa_entrega",m.ax],a2,g)
 p=5
-c=A.eO("https://preapdev.pythonanywhere.com/pedido/criar/")
+c=A.eO("https://preapdev.pythonanywhere.com/api/pedido/criar/")
 a2=A.at(["Content-Type","application/json"],a2,a2)
 s=8
 return A.Q(A.aQG(c,B.be.U_(l,null),a2),$async$ud)
