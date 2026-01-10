@@ -54,7 +54,7 @@ class _LoginPageState extends State<LoginPage> {
   Future<void> _fazerLogin() async {
     setState(() => _isLoading = true);
 
-    final String url = '${Config.baseUrl}/login/';
+    final String url = '${Config.baseUrl}/api/login/';
 
     try {
       final response = await http.post(

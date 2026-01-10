@@ -40723,7 +40723,7 @@ A.Dm.prototype={
 wu(){var s=0,r=A.N(t.H),q,p=2,o=[],n=[],m=this,l,k,j,i,h,g,f,e,d
 var $async$wu=A.O(function(a,b){if(a===1){o.push(b)
 s=p}for(;;)switch(s){case 0:m.af(new A.aki(m))
-l="https://preapdev.pythonanywhere.com/login/"
+l="https://preapdev.pythonanywhere.com/api/login/"
 p=4
 h=t.N
 s=7
