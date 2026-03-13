@@ -16,15 +16,20 @@ class Produto {
   });
 
   factory Produto.fromJson(Map<String, dynamic> json) {
+    String? urlFinal;
+    
+    // Troca a porta bloqueada pela porta VIP
+    if (json['imagem'] != null) {
+      String urlCorrigida = json['imagem'].toString().replaceFirst('/media/', '/media_api/');
+      urlFinal = "${Config.baseUrl}$urlCorrigida";
+    }
+
     return Produto(
       id: json['id'],
-      nome: json['nome_venda'],
+      nome: json['nome_venda'], 
       preco: double.parse(json['preco_venda'].toString()),
       estoque: json['estoque_atual'] ?? 0,
-      // Voltamos ao padrão original limpo:
-      imagemUrl: json['imagem'] != null
-          ? "${Config.baseUrl}${json['imagem']}"
-          : null,
+      imagemUrl: urlFinal,
     );
   }
 
@@ -36,11 +41,8 @@ class Produto {
   }
 
   String _removerAcentos(String texto) {
-    var comAcento =
-        'ÀÁÂÃÄÅàáâãäåÒÓÔÕÕÖØòóôõöøÈÉÊËèéêëðÇçÐÌÍÎÏìíîïÙÚÛÜùúûüÑñŠšŸÿýŽž';
-    var semAcento =
-        'AAAAAAaaaaaaOOOOOOOooooooEEEEeeeeeCcDIIIIiiiiUUUUuuuuNnSsYyyZz';
-
+    var comAcento = 'ÀÁÂÃÄÅàáâãäåÒÓÔÕÕÖØòóôõöøÈÉÊËèéêëðÇçÐÌÍÎÏìíîïÙÚÛÜùúûüÑñŠšŸÿýŽž';
+    var semAcento = 'AAAAAAaaaaaaOOOOOOOooooooEEEEeeeeeCcDIIIIiiiiUUUUuuuuNnSsYyyZz';
     for (int i = 0; i < comAcento.length; i++) {
       texto = texto.replaceAll(comAcento[i], semAcento[i]);
     }
