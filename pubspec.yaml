@@ -23,18 +23,31 @@ dev_dependencies:
   flutter_launcher_icons: ^0.13.1
   flutter_lints: ^6.0.0
 
-
 flutter:
   uses-material-design: true
   assets:
+    - assets/
     - assets/logocarlinho1.PNG
     - assets/produtos/
     - assets/icon/
 
-  
-
+# --- CONFIGURAÇÃO DO GERADOR DE ÍCONES ---
 flutter_launcher_icons:
   android: "launcher_icon"
   ios: true
-  image_path: "assets/icon/loja2.png"
+  # Substitua 'icon_theking.png' pelo nome exato do seu arquivo de imagem
+  image_path: "assets/icon/icon_theking.png" 
   min_sdk_android: 21
+
+  # --- O SEGREDO PARA TIRAR A BORDA BRANCA NO ANDROID (APK) ---
+  # O fundo vai ser preenchido com o Azul Meia-Noite do app The King
+  adaptive_icon_background: "#0A192F" 
+  # A imagem principal vai ficar por cima sem aquele quadrado branco
+  adaptive_icon_foreground: "assets/icon/icon_theking.png"
+
+  # --- CONFIGURAÇÃO PARA A VERCEL (WEB) ---
+  web:
+    generate: true
+    image_path: "assets/icon/icon_theking.png"
+    background_color: "#0A192F" # Cor de fundo do carregamento da aba web
+    theme_color: "#4D96FF" # Cor do tema do navegador (Azul Elétrico)

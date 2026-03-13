@@ -1,45 +1,39 @@
+import '../config.dart';
+
 class Produto {
   final int id;
   final String nome;
   final double preco;
   final int estoque;
+  final String? imagemUrl;
 
   Produto({
     required this.id,
     required this.nome,
     required this.preco,
     required this.estoque,
+    this.imagemUrl,
   });
 
-  
   factory Produto.fromJson(Map<String, dynamic> json) {
     return Produto(
       id: json['id'],
       nome: json['nome_venda'], 
-      
       preco: double.parse(json['preco_venda'].toString()),
       estoque: json['estoque_atual'] ?? 0,
+      // Se o Django mandar a imagem, ele junta com o IP do servidor. Se não, fica nulo.
+      imagemUrl: json['imagem'] != null ? "${Config.baseUrl}${json['imagem']}" : null,
     );
   }
 
   
-
-  
   String get imagemAsset {
-    
     String nomeLimpo = nome.toLowerCase();
-
-    
     nomeLimpo = _removerAcentos(nomeLimpo);
-
-    
     nomeLimpo = nomeLimpo.replaceAll(' ', '_');
-
-    
     return "assets/produtos/$nomeLimpo.png";
   }
 
-  
   String _removerAcentos(String texto) {
     var comAcento =
         'ÀÁÂÃÄÅàáâãäåÒÓÔÕÕÖØòóôõöøÈÉÊËèéêëðÇçÐÌÍÎÏìíîïÙÚÛÜùúûüÑñŠšŸÿýŽž';

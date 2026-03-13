@@ -1,13 +1,14 @@
-
-
 class Config {
-  // 1. O  SERVIDOR 
-  static const String ipServidor = "192.168.11.144:8000";
-  static const String baseUrl = "https://preapdev.pythonanywhere.com";
+  // 1. O  SERVIDOR
+  static const String ipServidor = "127.0.0.1:8000"; //"192.168.11.144:8000";
+  static const String baseUrl =  "https://preapdev.pythonanywhere.com"; //"http://127.0.0.1:8000";
 
-  // 2. A IDENTIDADE DA LOJA (MUDAR AQUI PARA GERAR NOVO APK) !!!
-  static const int lojaId = 1;
+  // Se for gerar o APK do The King, mude para true. 
+  // Se for gerar o APK da Magno Distribuidora, mude para false.
+  static const bool isRede = true; 
 
-  // static const  corPrincipal = Color(0xFF15A0A5);
-  static const String nomeLoja = "Magno Distribuidora";
+  // Se isRede for false, o App já entra direto nesta loja sem perguntar nada:
+  static int lojaId = 3; 
+
+  static String nomeLoja = "The King";
 }

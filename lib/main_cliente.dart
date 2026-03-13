@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
-import 'client_app/vitrine_screen.dart';
 import 'client_app/smart_image_service.dart'; 
+import 'client_app/vitrine_screen.dart'; // <--- AQUI! Trouxemos a vitrine de volta
+import 'client_app/selecionar_loja_screen.dart'; 
 import 'config.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
-  
   await SmartImageService.carregarDicionario();
 
   runApp(const MagnoAppCliente());
@@ -29,7 +29,8 @@ class MagnoAppCliente extends StatelessWidget {
         ),
       ),
       
-      home: const VitrineScreen(),
+      // A MÁGICA INTELIGENTE:
+      home: Config.isRede ? const SelecionarLojaScreen() : const VitrineScreen(),
     );
   }
 }

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
-import 'motoboy_screen.dart'; // Certifique-se que este arquivo existe na pasta lib
+import 'motoboy_screen.dart'; 
 import 'client_app/smart_image_service.dart';
 import 'config.dart';
 
@@ -20,24 +20,24 @@ class MagnoAppMotoboy extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Área do Entregador', // Nome diferente para identificar
+      title: 'Área do Entregador',
       debugShowCheckedModeBanner: false,
       theme: ThemeData.dark().copyWith(
         scaffoldBackgroundColor: const Color(0xFF1E1E1E),
-        // Mudei levemente a cor primária para azul para diferenciar visualmente do cliente
+        
         primaryColor: const Color(0xFF2196F3),
         colorScheme: const ColorScheme.dark(
           primary: Color(0xFF2196F3),
           secondary: Color(0xFF2196F3),
-        ),
+        ), 
       ),
-      // AQUI É A MUDANÇA: Vai direto para o Login
+      
       home: const LoginPage(),
     );
   }
 }
 
-// --- TELA DE LOGIN (Movida para cá) ---
+// --- TELA DE LOGIN ---
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
