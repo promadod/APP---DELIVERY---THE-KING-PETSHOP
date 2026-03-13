@@ -28,11 +28,21 @@ class _VitrineScreenState extends State<VitrineScreen> {
   final TextEditingController _searchController = TextEditingController();
 
   // --- CORES DO TEMA GLASSMORPHISM E PROFUNDIDADE ---
-  final Color corFundoApp = const Color(0xFF121212); // Cinza super profundo neutro
-  final Color corFundoCard = const Color(0xFF1E1E1E); // Cinza levemente mais claro para dar "elevação"
-  final Color corBordaVidro = Colors.white.withOpacity(0.08); // Borda quase transparente simulando vidro
-  final Color corAcento = const Color(0xFF4D96FF); // Azul Elétrico premium (Apple-like)
-  final Color corAlerta = const Color(0xFFFF4757); // Vermelho coral para o crachá do carrinho
+  final Color corFundoApp = const Color(
+    0xFF121212,
+  ); // Cinza super profundo neutro
+  final Color corFundoCard = const Color(
+    0xFF1E1E1E,
+  ); // Cinza levemente mais claro para dar "elevação"
+  final Color corBordaVidro = Colors.white.withOpacity(
+    0.08,
+  ); // Borda quase transparente simulando vidro
+  final Color corAcento = const Color(
+    0xFF4D96FF,
+  ); // Azul Elétrico premium (Apple-like)
+  final Color corAlerta = const Color(
+    0xFFFF4757,
+  ); // Vermelho coral para o crachá do carrinho
 
   @override
   void initState() {
@@ -88,7 +98,10 @@ class _VitrineScreenState extends State<VitrineScreen> {
       ScaffoldMessenger.of(context).hideCurrentSnackBar();
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
-          content: Text("Ops! Só temos ${p.estoque} unidades em estoque.", style: const TextStyle(color: Colors.white)),
+          content: Text(
+            "Ops! Só temos ${p.estoque} unidades em estoque.",
+            style: const TextStyle(color: Colors.white),
+          ),
           backgroundColor: corAlerta,
           behavior: SnackBarBehavior.floating,
         ),
@@ -103,7 +116,10 @@ class _VitrineScreenState extends State<VitrineScreen> {
     ScaffoldMessenger.of(context).hideCurrentSnackBar();
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(
-        content: const Text("Adicionado ao carrinho!", style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold)),
+        content: const Text(
+          "Adicionado ao carrinho!",
+          style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
+        ),
         backgroundColor: corAcento, // Azul elétrico no aviso
         duration: const Duration(milliseconds: 500),
         behavior: SnackBarBehavior.floating,
@@ -117,15 +133,25 @@ class _VitrineScreenState extends State<VitrineScreen> {
     return Scaffold(
       backgroundColor: corFundoApp, // Fundo ultra escuro
       appBar: AppBar(
-        title: Text("${Config.nomeLoja} ", style: const TextStyle(color: Colors.white, fontWeight: FontWeight.w600, letterSpacing: 0.5)),
+        title: Text(
+          "${Config.nomeLoja} ",
+          style: const TextStyle(
+            color: Colors.white,
+            fontWeight: FontWeight.w600,
+            letterSpacing: 0.5,
+          ),
+        ),
         backgroundColor: corFundoApp,
-        elevation: 0, 
-        iconTheme: const IconThemeData(color: Colors.white), 
+        elevation: 0,
+        iconTheme: const IconThemeData(color: Colors.white),
         actions: [
           Stack(
             children: [
               IconButton(
-                icon: const Icon(Icons.shopping_cart_outlined, color: Colors.white), // Ícone vazado moderno
+                icon: const Icon(
+                  Icons.shopping_cart_outlined,
+                  color: Colors.white,
+                ), // Ícone vazado moderno
                 onPressed: () async {
                   if (carrinho.isEmpty) return;
                   final pedidoFeito = await Navigator.push(
@@ -150,8 +176,12 @@ class _VitrineScreenState extends State<VitrineScreen> {
                       color: corAlerta, // Vermelho elegante
                       shape: BoxShape.circle,
                       boxShadow: [
-                        BoxShadow(color: corAlerta.withOpacity(0.4), blurRadius: 4, spreadRadius: 1)
-                      ]
+                        BoxShadow(
+                          color: corAlerta.withOpacity(0.4),
+                          blurRadius: 4,
+                          spreadRadius: 1,
+                        ),
+                      ],
                     ),
                     constraints: const BoxConstraints(
                       minWidth: 18,
@@ -163,7 +193,7 @@ class _VitrineScreenState extends State<VitrineScreen> {
                       style: const TextStyle(
                         fontSize: 10,
                         fontWeight: FontWeight.bold,
-                        color: Colors.white
+                        color: Colors.white,
                       ),
                     ),
                   ),
@@ -173,24 +203,38 @@ class _VitrineScreenState extends State<VitrineScreen> {
         ],
       ),
       drawer: Drawer(
-        backgroundColor: corFundoApp, 
+        backgroundColor: corFundoApp,
         child: ListView(
           children: [
             UserAccountsDrawerHeader(
-              accountName: const Text("Menu Cliente", style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold)),
-              accountEmail: Text(Config.nomeLoja, style: TextStyle(color: corAcento)),
+              accountName: const Text(
+                "Menu Cliente",
+                style: TextStyle(
+                  color: Colors.white,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+              accountEmail: Text(
+                Config.nomeLoja,
+                style: TextStyle(color: corAcento),
+              ),
               currentAccountPicture: CircleAvatar(
                 backgroundColor: corFundoCard,
                 child: Icon(Icons.person, color: corAcento),
               ),
               decoration: BoxDecoration(
                 color: corFundoApp,
-                border: Border(bottom: BorderSide(color: corBordaVidro, width: 1)) // Borda separadora de vidro
+                border: Border(
+                  bottom: BorderSide(color: corBordaVidro, width: 1),
+                ), // Borda separadora de vidro
               ),
             ),
             ListTile(
               leading: Icon(Icons.receipt_long, color: corAcento),
-              title: const Text("Meus Pedidos", style: TextStyle(color: Colors.white70)),
+              title: const Text(
+                "Meus Pedidos",
+                style: TextStyle(color: Colors.white70),
+              ),
               onTap: () {
                 Navigator.pop(context);
                 Navigator.push(
@@ -209,24 +253,36 @@ class _VitrineScreenState extends State<VitrineScreen> {
           : Column(
               children: [
                 Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 14.0, vertical: 10.0),
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 14.0,
+                    vertical: 10.0,
+                  ),
                   child: TextField(
                     controller: _searchController,
                     onChanged: (value) => _filtrarResultados(value),
-                    style: const TextStyle(color: Colors.white), 
+                    style: const TextStyle(color: Colors.white),
                     decoration: InputDecoration(
                       hintText: 'Pesquisar produto...',
                       hintStyle: const TextStyle(color: Colors.white38),
-                      prefixIcon: const Icon(Icons.search, color: Colors.white54),
+                      prefixIcon: const Icon(
+                        Icons.search,
+                        color: Colors.white54,
+                      ),
                       filled: true,
-                      fillColor: corFundoCard, 
+                      fillColor: corFundoCard,
                       enabledBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(12),
-                        borderSide: BorderSide(color: corBordaVidro, width: 1), // Borda de vidro
+                        borderSide: BorderSide(
+                          color: corBordaVidro,
+                          width: 1,
+                        ), // Borda de vidro
                       ),
                       focusedBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(12),
-                        borderSide: BorderSide(color: corAcento, width: 1.5), // Foca em azul
+                        borderSide: BorderSide(
+                          color: corAcento,
+                          width: 1.5,
+                        ), // Foca em azul
                       ),
                       contentPadding: const EdgeInsets.symmetric(
                         vertical: 0,
@@ -240,27 +296,37 @@ class _VitrineScreenState extends State<VitrineScreen> {
                       ? const Center(
                           child: Text(
                             "Nenhum produto encontrado.",
-                            style: TextStyle(color: Colors.white54, fontSize: 16),
+                            style: TextStyle(
+                              color: Colors.white54,
+                              fontSize: 16,
+                            ),
                           ),
                         )
                       : GridView.builder(
                           padding: const EdgeInsets.fromLTRB(14, 5, 14, 15),
                           gridDelegate:
                               const SliverGridDelegateWithFixedCrossAxisCount(
-                            crossAxisCount: 2,
-                            childAspectRatio: 0.72, 
-                            crossAxisSpacing: 14,
-                            mainAxisSpacing: 14,
-                          ),
+                                crossAxisCount: 2,
+                                childAspectRatio: 0.72,
+                                crossAxisSpacing: 14,
+                                mainAxisSpacing: 14,
+                              ),
                           itemCount: produtosFiltrados.length,
                           itemBuilder: (context, index) {
                             final prod = produtosFiltrados[index];
-                            String caminhoImagem = SmartImageService.buscarPorId(prod.id);
+                            String caminhoImagem =
+                                SmartImageService.buscarPorId(prod.id);
 
                             Widget iconeFallback = Container(
-                              color: const Color(0xFFF5F5F5), // Branco gelo para destacar a foto
+                              color: const Color(
+                                0xFFF5F5F5,
+                              ), // Branco gelo para destacar a foto
                               child: Center(
-                                child: Icon(Icons.image_not_supported_outlined, color: Colors.grey[400], size: 40),
+                                child: Icon(
+                                  Icons.image_not_supported_outlined,
+                                  color: Colors.grey[400],
+                                  size: 40,
+                                ),
                               ),
                             );
 
@@ -275,7 +341,8 @@ class _VitrineScreenState extends State<VitrineScreen> {
                                     return Image.asset(
                                       caminhoImagem,
                                       fit: BoxFit.contain,
-                                      errorBuilder: (ctx, err, stack) => iconeFallback,
+                                      errorBuilder: (ctx, err, stack) =>
+                                          iconeFallback,
                                     );
                                   }
                                   return iconeFallback;
@@ -286,7 +353,8 @@ class _VitrineScreenState extends State<VitrineScreen> {
                                 widgetImagem = Image.asset(
                                   caminhoImagem,
                                   fit: BoxFit.contain,
-                                  errorBuilder: (ctx, err, stack) => iconeFallback,
+                                  errorBuilder: (ctx, err, stack) =>
+                                      iconeFallback,
                                 );
                               } else {
                                 widgetImagem = iconeFallback;
@@ -296,15 +364,20 @@ class _VitrineScreenState extends State<VitrineScreen> {
                             return Container(
                               decoration: BoxDecoration(
                                 color: corFundoCard,
-                                borderRadius: BorderRadius.circular(16), // Bordas um pouco mais arredondadas (estilo iOS)
-                                border: Border.all(color: corBordaVidro, width: 1.5), // Borda fina de "vidro"
+                                borderRadius: BorderRadius.circular(
+                                  16,
+                                ), // Bordas um pouco mais arredondadas (estilo iOS)
+                                border: Border.all(
+                                  color: corBordaVidro,
+                                  width: 1.5,
+                                ), // Borda fina de "vidro"
                                 boxShadow: [
                                   BoxShadow(
                                     color: Colors.black.withOpacity(0.3),
                                     blurRadius: 8,
-                                    offset: const Offset(0, 4)
-                                  )
-                                ]
+                                    offset: const Offset(0, 4),
+                                  ),
+                                ],
                               ),
                               child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -313,7 +386,7 @@ class _VitrineScreenState extends State<VitrineScreen> {
                                     child: Container(
                                       padding: const EdgeInsets.all(8),
                                       decoration: const BoxDecoration(
-                                        color: Colors.white, 
+                                        color: Colors.white,
                                         borderRadius: BorderRadius.vertical(
                                           top: Radius.circular(14),
                                         ),
@@ -332,8 +405,9 @@ class _VitrineScreenState extends State<VitrineScreen> {
                                           child: Text(
                                             prod.nome,
                                             style: const TextStyle(
-                                              color: Colors.white, 
-                                              fontWeight: FontWeight.w600, // Menos bold, mais elegante
+                                              color: Colors.white,
+                                              fontWeight: FontWeight
+                                                  .w600, // Menos bold, mais elegante
                                               fontSize: 13,
                                             ),
                                             maxLines: 2,
@@ -344,7 +418,8 @@ class _VitrineScreenState extends State<VitrineScreen> {
                                         Text(
                                           "R\$ ${prod.preco.toStringAsFixed(2)}",
                                           style: TextStyle(
-                                            color: corAcento, // Azul elétrico super nítido
+                                            color:
+                                                corAcento, // Azul elétrico super nítido
                                             fontWeight: FontWeight.bold,
                                             fontSize: 16,
                                           ),
@@ -352,21 +427,35 @@ class _VitrineScreenState extends State<VitrineScreen> {
                                         const SizedBox(height: 12),
                                         SizedBox(
                                           width: double.infinity,
-                                          height: 36, 
+                                          height: 36,
                                           child: ElevatedButton(
                                             style: ElevatedButton.styleFrom(
                                               // A MÁGICA DO GLASSMORPHISM NO BOTÃO: Fundo levemente transparente
-                                              backgroundColor: corAcento.withOpacity(0.15), 
-                                              foregroundColor: corAcento, 
-                                              side: BorderSide(color: corAcento.withOpacity(0.4), width: 1), // Borda sutil
+                                              backgroundColor: corAcento
+                                                  .withOpacity(0.15),
+                                              foregroundColor: corAcento,
+                                              side: BorderSide(
+                                                color: corAcento.withOpacity(
+                                                  0.4,
+                                                ),
+                                                width: 1,
+                                              ), // Borda sutil
                                               shape: RoundedRectangleBorder(
-                                                borderRadius: BorderRadius.circular(10)
+                                                borderRadius:
+                                                    BorderRadius.circular(10),
                                               ),
                                               elevation: 0,
                                             ),
                                             onPressed: () =>
                                                 adicionarAoCarrinho(prod),
-                                            child: const Text("ADICIONAR", style: TextStyle(fontSize: 12, fontWeight: FontWeight.w800, letterSpacing: 0.5)),
+                                            child: const Text(
+                                              "ADICIONAR",
+                                              style: TextStyle(
+                                                fontSize: 12,
+                                                fontWeight: FontWeight.w800,
+                                                letterSpacing: 0.5,
+                                              ),
+                                            ),
                                           ),
                                         ),
                                       ],
