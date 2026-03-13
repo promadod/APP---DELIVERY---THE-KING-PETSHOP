@@ -3,11 +3,11 @@ import 'package:flutter/services.dart';
 class SmartImageService {
   static List<String> _arquivosDisponiveis = [];
 
-  
   static Future<void> carregarDicionario() async {
     try {
       final manifest = await AssetManifest.loadFromAssetBundle(rootBundle);
-      _arquivosDisponiveis = manifest.listAssets()
+      _arquivosDisponiveis = manifest
+          .listAssets()
           .where((key) => key.contains('assets/produtos/'))
           .toList();
       print("🧠 Imagens carregadas: ${_arquivosDisponiveis.length}");
@@ -16,7 +16,6 @@ class SmartImageService {
     }
   }
 
-  
   static String buscarPorId(int id) {
     // Monta o caminho esperado: assets/produtos/986.png
     String caminhoExato = "assets/produtos/$id.png";

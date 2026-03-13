@@ -27,22 +27,12 @@ class _VitrineScreenState extends State<VitrineScreen> {
 
   final TextEditingController _searchController = TextEditingController();
 
-  // --- CORES DO TEMA GLASSMORPHISM E PROFUNDIDADE ---
-  final Color corFundoApp = const Color(
-    0xFF121212,
-  ); // Cinza super profundo neutro
-  final Color corFundoCard = const Color(
-    0xFF1E1E1E,
-  ); // Cinza levemente mais claro para dar "elevação"
-  final Color corBordaVidro = Colors.white.withOpacity(
-    0.08,
-  ); // Borda quase transparente simulando vidro
-  final Color corAcento = const Color(
-    0xFF4D96FF,
-  ); // Azul Elétrico premium (Apple-like)
-  final Color corAlerta = const Color(
-    0xFFFF4757,
-  ); // Vermelho coral para o crachá do carrinho
+  // --- CORES DO TEMA CYBERPUNK COOL (AZUL PREMIUM) ---
+  final Color corFundoApp = const Color(0xFF0A192F); // Azul Meia-Noite profundo
+  final Color corFundoCard = const Color(0xFF172A45); // Azul Ardósia
+  final Color corBordaVidro = const Color(0xFF00FFFF).withOpacity(0.15); // Borda Ciano bem suave
+  final Color corAcento = const Color(0xFF00FFFF); // Ciano Vibrante
+  final Color corAlerta = const Color(0xFFFF4757); // Vermelho coral para o crachá
 
   @override
   void initState() {
